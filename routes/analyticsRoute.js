@@ -3,7 +3,7 @@ const app = module.exports = require('express')();
 const analyticsServices = require('../services/analyticsServices');
 
 app.get("/alive", (req, res) => {
-    res.json({ get: true })
+    res.json({ alive: true })
 })
 
 app.post("/", (req, res) => {
