@@ -16,6 +16,13 @@ what acction has been performed
 ### name:-
 This is not mandetory but it is given to more specify a action performed 
 
+## Register
+`https://cbkm-analytics-services.herokuapp.com/cbkm`
+Register your App It must be unique 
+Get the ID save it securely
+Apply it on header of every request
+appID:<yourApp>1565604151669
+
 ## APIs
 
 This is the root link 
