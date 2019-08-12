@@ -25,6 +25,7 @@ This is not mandetory but it is given to more specify a action performed
 - Apply it on header of every request
 - if you use axios
 - `axios.defaults.headers.common['appID'] = '<yourApp>1565604151669' // for all requests`
+- `axios.defaults.headers.post['header1'] = 'value' // for POST requests`
 
 ## APIs
 
