@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-
 const analyticsSchema = mongoose.Schema({
     action: {
         required: true,
@@ -12,6 +10,10 @@ const analyticsSchema = mongoose.Schema({
     stamp: {
         required: true,
         type: Date,
+    },
+    appID: {
+        required: true,
+        type: String,
     }
 
 }, { timestamps: true })

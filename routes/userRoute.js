@@ -12,7 +12,7 @@ app.post('/register', (req, res) => {
                 console.log(user)
                 res.json({
                     success: false,
-                    message: "App already"
+                    message: "App already Exists"
                 })
             }
             else {

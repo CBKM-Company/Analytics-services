@@ -2,13 +2,13 @@ const app = module.exports = require('express')();
 
 const analyticsServices = require('../services/analyticsServices');
 
-const {userAuth} = require('../middleware/auth')
+const { userAuth } = require('../middleware/auth')
 
-app.get("/alive",userAuth, (req, res) => {
+app.get("/alive", userAuth, (req, res) => {
     res.json({ alive: true })
 })
 
-app.post("/",userAuth, (req, res) => {
+app.post("/", userAuth, (req, res) => {
     (async () => {
         try {
             data = req.body
@@ -29,10 +29,10 @@ app.post("/",userAuth, (req, res) => {
         }
     })();
 })
-app.get('/',userAuth, (req, res) => {
+app.get('/', userAuth, (req, res) => {
     (async () => {
         try {
-            pro = await analyticsServices.getAnalytics()
+            pro = await analyticsServices.getAnalytics({ appID: req.body.appID })
             res.json({ success: true, data: pro })
         }
         catch (e) {
@@ -43,11 +43,12 @@ app.get('/',userAuth, (req, res) => {
         }
     })();
 })
-app.get('/action/:id', userAuth,(req, res) => {
+app.get('/action/:id', userAuth, (req, res) => {
     (async () => {
         try {
             pro = await analyticsServices.getAnalytics({
-                "action": req.params.id
+                "action": req.params.id,
+                appID: req.body.appID
             })
             res.json({ success: true, data: pro })
         }
@@ -59,11 +60,12 @@ app.get('/action/:id', userAuth,(req, res) => {
         }
     })();
 });
-app.get('/name/:id',userAuth, (req, res) => {
+app.get('/name/:id', userAuth, (req, res) => {
     (async () => {
         try {
             pro = await analyticsServices.getAnalytics({
-                "name": req.params.id
+                "name": req.params.id,
+                appID: req.body.appID
             })
             res.json({ success: true, data: pro })
         }
@@ -76,7 +78,7 @@ app.get('/name/:id',userAuth, (req, res) => {
     })();
 });
 
-app.post('/specific',userAuth, (req, res) => {
+app.post('/specific', userAuth, (req, res) => {
     (async () => {
         try {
             pro = await analyticsServices.getAnalytics(req.body)
@@ -91,11 +93,12 @@ app.post('/specific',userAuth, (req, res) => {
     })();
 });
 
-app.get('/actioncount/:id',userAuth, (req, res) => {
+app.get('/actioncount/:id', userAuth, (req, res) => {
     (async () => {
         try {
             pro = await analyticsServices.getAnalyticsCount({
-                "action": req.params.id
+                "action": req.params.id,
+                appID: req.body.appID
             })
             res.json({ success: true, data: pro })
         }
@@ -109,11 +112,12 @@ app.get('/actioncount/:id',userAuth, (req, res) => {
 });
 
 
-app.get('/namecount/:id', userAuth,(req, res) => {
+app.get('/namecount/:id', userAuth, (req, res) => {
     (async () => {
         try {
             pro = await analyticsServices.getAnalyticsCount({
-                "name": req.params.id
+                "name": req.params.id,
+                appID: req.body.appID
             })
             res.json({ success: true, data: pro })
         }
@@ -129,7 +133,7 @@ app.get('/namecount/:id', userAuth,(req, res) => {
 
 
 
-app.post('/specificcount',userAuth, (req, res) => {
+app.post('/specificcount', userAuth, (req, res) => {
     (async () => {
         try {
             pro = await analyticsServices.getAnalyticsCount(req.body)
@@ -148,7 +152,8 @@ app.get('/actiondelete/:id', (req, res) => {
     (async () => {
         try {
             pro = await analyticsServices.deleteAnalytics({
-                "action": req.params.id
+                "action": req.params.id,
+                appID: req.body.appID
             })
             res.json({ success: true, data: pro })
         }
@@ -161,11 +166,12 @@ app.get('/actiondelete/:id', (req, res) => {
     })();
 });
 
-app.get('/namedelete/:id',userAuth, (req, res) => {
+app.get('/namedelete/:id', userAuth, (req, res) => {
     (async () => {
         try {
             pro = await analyticsServices.deleteAnalytics({
-                name: req.params.id
+                name: req.params.id,
+                appID: req.body.appID
             })
             res.json({ success: true, data: pro })
         }
@@ -178,10 +184,10 @@ app.get('/namedelete/:id',userAuth, (req, res) => {
     })();
 });
 
-app.post('/specificdelete',userAuth, (req, res) => {
+app.post('/specificdelete', userAuth, (req, res) => {
     (async () => {
         try {
-            pro = await analyticsServices.deleteAnalytics(req.body)
+            pro = await analyticsServices.deleteAnalytics(req.body, req.body.appID)
             res.json({ success: true, data: pro })
         }
         catch (e) {
@@ -193,13 +199,13 @@ app.post('/specificdelete',userAuth, (req, res) => {
     })();
 });
 
-
-app.post('/distinct',userAuth, (req, res) => {
+app.post('/distinct', userAuth, (req, res) => {
     (async () => {
         try {
             what = req.body.what;
             how = req.body.how
-            pro = await analyticsServices.getDistinctAnalytics(what, how)
+            appID = req.body.appID
+            pro = await analyticsServices.getDistinctAnalytics(what, how, req.body.appID)
             res.json({ success: true, data: pro })
         }
         catch (e) {

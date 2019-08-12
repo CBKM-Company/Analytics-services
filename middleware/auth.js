@@ -12,7 +12,11 @@ let userAuth = (req, res, next) => {
                 message: "You are not a registered app"
             })
         }
-        next()
+        else{
+            req.body.appID=req.headers.appid
+            next()
+        }
+        
     })()
 
 
