@@ -8,12 +8,14 @@ var routes = require('./routes')
 var app = express();
 
 
+
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
 app.use('/', routes);
 
+app.use('/cbkm', express.static('public'))
 
 
 mongoose.connect('mongodb+srv://cbkm:cbkm@cbkm-zokml.mongodb.net/analytics?retryWrites=true&w=majority', { useNewUrlParser: true });
@@ -27,5 +29,8 @@ app.get('/get', (req, res) => {
     res.json({ get: true })
 })
 
-const server = app.listen(process.env.PORT || 8080, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
 });
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiR3JhYklUIiwiaWF0IjoxNTY1NTk0NzYxfQ.LyLk-jYRNxZj80xvFY53YoBLImPUtlnUW8s4KCcYaxM
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBOYW1lIjoiR3JhYklUIiwiaWF0IjoxNTY1NTk0ODA1fQ.i9ZpSP83TAuk4VkHs7HbcplGRd91jybyNbX2gYSmnfc
