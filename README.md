@@ -17,14 +17,14 @@ what acction has been performed
 ### name:-
 This is not mandetory but it is given to more specify a action performed 
 
-## Register
+## Register Here
 
-`https://cbkm-analytics-services.herokuapp.com/cbkm`
-Register your App It must be unique 
-Get the ID save it securely
-Apply it on header of every request
-if you use axios
-`axios.defaults.headers.common['appID'] = '<yourApp>1565604151669' // for all requests`
+- `https://cbkm-analytics-services.herokuapp.com/cbkm`
+- Register your App It must be unique 
+- Get the ID save it securely
+- Apply it on header of every request
+- if you use axios
+- `axios.defaults.headers.common['appID'] = '<yourApp>1565604151669' // for all requests`
 
 ## APIs
 
@@ -57,7 +57,7 @@ request:-
 > 
 response :-`{success:true}` or `{success:false}`
 
-## get Data
+## Get Data
 get:- `https://cbkm-analytics-services.herokuapp.com/analytics/`
 response :-
 ```
