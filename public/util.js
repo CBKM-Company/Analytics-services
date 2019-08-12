@@ -1,4 +1,4 @@
-url = "http://localhost:3000"
+url = "https://cbkm-analytics-services.herokuapp.com"
 
 function register() {
     data = {
