@@ -21,7 +21,8 @@ This is not mandetory but it is given to more specify a action performed
 Register your App It must be unique 
 Get the ID save it securely
 Apply it on header of every request
-appID:<yourApp>1565604151669
+if you use axios
+axios.defaults.headers.common['appID'] = '<yourApp>1565604151669' // for all requests
 
 ## APIs
 
