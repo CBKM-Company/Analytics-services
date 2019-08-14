@@ -9,6 +9,7 @@ var app = express();
 
 
 const userServices = require('./services/userServices');
+const analyticsServices = require('./services/analyticsServices');
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
