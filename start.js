@@ -44,6 +44,7 @@ analytics = io
                 user = await userServices.getUser({ appID: data.appID })
                 console.log(user)
                 if(user){
+                    user.stamp = (new Date(Date.now() - (-330) * 60000)).toISOString()
                     pro = await analyticsServices.saveAnalytics(data)
                 }
             })();
