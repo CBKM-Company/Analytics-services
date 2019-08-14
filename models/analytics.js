@@ -7,6 +7,9 @@ const analyticsSchema = mongoose.Schema({
     name: {
         type: String,
     },
+    id: {
+        type: String,
+    },
     stamp: {
         required: true,
         type: Date,
