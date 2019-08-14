@@ -2,7 +2,6 @@ const app = module.exports = require('express')();
 
 const userServices = require('../services/userServices');
 
-
 app.post('/register', (req, res) => {
     (async () => {
         try {
