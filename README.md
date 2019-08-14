@@ -1,4 +1,5 @@
 
+
 # CBKM
 ## Analytics API 
 ### Introduction
@@ -57,6 +58,27 @@ request:-
 > }
 > 
 response :-`{success:true}` or `{success:false}`
+
+You can alos set data through websocket
+```
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+<script>
+var  socket = io('https://cbkm-analytics-services.herokuapp.com');
+function  wow() {
+data={
+appID:"Grab_IT15665642939041",
+action:"myaction",
+myname:"myname"
+}
+socket.emit('save', data);
+window.location.href = "index.html"
+}
+</script>
+
+<button  onclick="wow()">
+click
+</button>
+```
 
 ## Get Data
 get:- `https://cbkm-analytics-services.herokuapp.com/analytics/`
