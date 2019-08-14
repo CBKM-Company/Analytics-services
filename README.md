@@ -58,6 +58,7 @@ request:-
 > }
 > 
 response :-`{success:true}` or `{success:false}`
+
 You can alos set data through websocket
 ```
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
